@@ -3,45 +3,40 @@ $(document).ready(function(){
 var rpsLogic = ['rock', 'paper','scissors'];
 var playerScore = 0;
 var computerScore =0;
+var roundCount = 0;
+
 
 //Game Function
-function gameState(rounds){
-  roundCount = rounds;
-  while(roundCount>0){
-   var player = userPicks();
+function gameState(rounds, player){
+  if(roundCount < rounds){
     var computer = computerInput();
     var result = compareInputs(player,computer);
     scoreCount(result, 1);
     if(result!==0){
-      roundCount --;
+      roundCount++;
+      $('#rounds').html(roundCount);
     }
-    
   }
-  
-  resetGame();
+  else if (roundCount>=rounds){
+    if(playerScore>computerScore){
+      swal('User Wins THE GAME!');
+    }
+    else if (playerScore<computerScore){
+      swal('Computer Wins The GAME!');
+    }
+  }  
+
 }
-
-
-/*
-function gameState (rounds) {
-  for (index = rounds; index > 0; index --) {
-    var player = userPicks();
-    var computer = computerInput();
-    var result = compareInputs(player,computer);
-    scoreCount(result, 1);
- }
-  resetGame();
-}
-
-*/
 
 //player Input 
 function userPicks(){
-  
- var userInput = prompt("Choose bitch");
-    return userInput;
-    alert(userInput);
+  $('.game').on('click',function(){
+    var userInput = $(this).attr('value');
+    gameState(3, userInput);
+  });
+
  }
+ userPicks();
 
 //computer logic
 function computerInput(){
@@ -61,18 +56,18 @@ function computerInput(){
 //compare inputs
 function compareInputs(input1,input2){
   if(input1 === input2){
-    alert("Tie try again");
+    swal("Tie try again");
     return 0;
   }
   if((input1 ==='rock' && input2 === 'paper')||
      (input1 ==='paper' && input2 === 'rock')||
      (input1 ==='scissors'&& input2 === 'paper'))
     {
-      alert('Player Wins!');
+      swal('Player Wins!');
       return 1;
     }
     {
-      alert('Computer Wins!');
+      swal('Computer Wins!');
       return 2;
     }
 }
@@ -96,8 +91,9 @@ function scoreCount(result,points){
 function resetGame(){
   playerScore = 0;
   computerScore = 0;
+ 
 }
 
-gameState(3);
+
 
 });
