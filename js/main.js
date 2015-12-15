@@ -25,7 +25,7 @@ function gameState(rounds, player){
   }
   else if (roundCount>=rounds){
     if(playerScore>computerScore){
-      $('#grpahic-computer').remove();
+      $('#graphic-user').remove();
       $('#graphic-user').append('<img class="responsive-img slideRight bounce" id="winner-image" src="img/winner.png">');
       swal('You won! Scoring ' +playerScore+ ' victories' );
     }
@@ -88,7 +88,7 @@ function compareInputs(input1,input2){
     swal("Tie try again");
     return 0;
   }
-  if((input1 ==='rock' && input2 === 'scissor')||
+  if((input1 ==='rock' && input2 === 'scissors')||
      (input1 ==='paper' && input2 === 'rock')||
      (input1 ==='scissors'&& input2 === 'paper'))
     {
