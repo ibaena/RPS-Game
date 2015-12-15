@@ -1,6 +1,6 @@
 body{
 
-  background-image: url('img/background.jpg');
+  background-image: url('../img/background.jpg');
 }
 
 
@@ -33,7 +33,7 @@ text-align: right;
 .user-image{
   width: 125px;
   height: 150px;
-  
+
    -webkit-transform: rotate(315deg);
     -moz-transform: rotate(315deg);
     -o-transform: rotate(315deg);
@@ -52,6 +52,6 @@ text-align: right;
   margin-top: 50px;
 }
 
-.start{
+#start{
   display: block;
 }

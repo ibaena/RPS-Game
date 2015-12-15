@@ -5,7 +5,7 @@ var playerScore = 0;
 var computerScore =0;
 var tieScore = 0;
 var roundCount = 0;
-
+var timer=0;
 
 //Game Function
 function gameState(rounds, player){
@@ -22,10 +22,10 @@ function gameState(rounds, player){
   }
   else if (roundCount>=rounds){
     if(playerScore>computerScore){
-      swal('User Wins THE GAME!');
+      swal('You won! Scoring ' +playerScore+ ' victories' );
     }
     else if (playerScore<computerScore){
-      swal('Computer Wins The GAME!');
+      swal('CPU won. Scoring '+computerScore+' victories');
     }
  $('.game').on('click',function(){
   location.reload();
@@ -36,7 +36,7 @@ function gameState(rounds, player){
 
 //player Input 
 function userPicks(){
-  $('.game').on('dblclick',function(){
+  $('.game').on('click',function(){
     fadeImage();
     var userInput = $(this).attr('value');
     if (userInput==='rock') {
@@ -123,9 +123,10 @@ function shakeHands(){
     $(".closed-hands").remove();
 }
 
-function addFists(){
-  $('#graphic-user').append('<img class="animated infinite bounce closed-hands" src="img/closed.png">');
-}
+
+
+
+
 
 //clear the scores out
 function resetGame(){
