@@ -3,11 +3,13 @@ $(document).ready(function(){
 var rpsLogic = ['rock', 'paper','scissors'];
 var playerScore = 0;
 var computerScore =0;
+var tieScore = 0;
 var roundCount = 0;
 
 
 //Game Function
 function gameState(rounds, player){
+  shakeHands();
   if(roundCount < rounds){
     var computer = computerInput();
     var result = compareInputs(player,computer);
@@ -16,6 +18,7 @@ function gameState(rounds, player){
       roundCount++;
       $('#rounds').html(roundCount);
     }
+
   }
   else if (roundCount>=rounds){
     if(playerScore>computerScore){
@@ -24,33 +27,52 @@ function gameState(rounds, player){
     else if (playerScore<computerScore){
       swal('Computer Wins The GAME!');
     }
-  }  
+ $('.game').on('click',function(){
+  location.reload();
+ })
 
+  }  
 }
 
 //player Input 
 function userPicks(){
-  $('.game').on('click',function(){
+  $('.game').on('dblclick',function(){
+    fadeImage();
     var userInput = $(this).attr('value');
+    if (userInput==='rock') {
+      $('#graphic-user').append('<img class="user-image responsive-img pullDown" src="img/rock-user.png">');
+    }
+    if (userInput==='paper') {
+      $('#graphic-user').append('<img class="user-image responsive-img pullDown" src="img/paper-user.png">');
+    }
+    if (userInput==='scissors') {
+      $('#graphic-user').append('<img class="user-image responsive-img pullDown" src="img/scissor-user.png">');
+    }
+ 
     gameState(3, userInput);
   });
 
  }
  userPicks();
 
+
 //computer logic
 function computerInput(){
   var cpuInput =  Math.floor(Math.random() * rpsLogic.length);
   console.log(cpuInput);
   if (cpuInput===0){
+     $('#graphic-computer').append('<img class="user-image responsive-img pullUp" src="img/rock.png">');
     return 'rock';
   }
    if (cpuInput===1){
+    $('#graphic-computer').append('<img class="user-image responsive-img pullUp" src="img/paper.png">');
     return 'paper';
   }
-  
+    if (cpuInput===2){
+      $('#graphic-computer').append('<img class="user-image responsive-img pullUp" src="img/scissor.png">');
     return 'scissors';
-  
+  }
+
 }
 
 //compare inputs
@@ -59,7 +81,7 @@ function compareInputs(input1,input2){
     swal("Tie try again");
     return 0;
   }
-  if((input1 ==='rock' && input2 === 'paper')||
+  if((input1 ==='rock' && input2 === 'scissor')||
      (input1 ==='paper' && input2 === 'rock')||
      (input1 ==='scissors'&& input2 === 'paper'))
     {
@@ -84,8 +106,26 @@ function scoreCount(result,points){
   } else {
     playerScore += 0;
     computerScore += 0;
+    tieScore+=points;
+    $('#tieScore').html(tieScore);
   }
 };
+
+//fade out images
+
+function fadeImage(){
+ 
+    $('.user-image').remove();
+    $('#explosion').remove();
+}
+
+function shakeHands(){
+    $(".closed-hands").remove();
+}
+
+function addFists(){
+  $('#graphic-user').append('<img class="animated infinite bounce closed-hands" src="img/closed.png">');
+}
 
 //clear the scores out
 function resetGame(){

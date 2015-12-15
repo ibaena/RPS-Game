@@ -1,3 +1,9 @@
+body{
+
+  background-image: url('img/background.jpg');
+}
+
+
 /*Buttons*/
 
 #randBtn{
@@ -7,4 +13,45 @@
 span {
 
   text-align: center;
+}
+
+#scoreboard{
+  padding-bottom: 50px;
+  text-align: center;
+}
+
+#graphic-computer{
+text-align: right;
+}
+
+#graphic{
+
+ height: 300px
+}
+
+
+.user-image{
+  width: 125px;
+  height: 150px;
+  
+   -webkit-transform: rotate(315deg);
+    -moz-transform: rotate(315deg);
+    -o-transform: rotate(315deg);
+    -ms-transform: rotate(315deg);
+    transform: rotate(315deg);
+}
+
+.closed-hands{
+  width: 125px;
+  height: 150px;
+
+ 
+}
+
+.game{
+  margin-top: 50px;
+}
+
+.start{
+  display: block;
 }
