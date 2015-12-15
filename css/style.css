@@ -1,6 +1,7 @@
 body{
-
-  background-image: url('../img/background.jpg');
+background-image: url('../img/background.jpg');
+background-size: cover;
+  
 }
 
 
@@ -16,7 +17,7 @@ span {
 }
 
 #scoreboard{
-  padding-bottom: 50px;
+  padding-bottom: 30px;
   text-align: center;
 }
 
@@ -49,9 +50,13 @@ text-align: right;
 }
 
 .game{
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 #start{
   display: block;
+}
+
+h5{
+  font-weight: bold;
 }

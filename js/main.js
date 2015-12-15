@@ -7,8 +7,11 @@ var tieScore = 0;
 var roundCount = 0;
 var timer=0;
 
+intro();
+
 //Game Function
 function gameState(rounds, player){
+
   shakeHands();
   if(roundCount < rounds){
     var computer = computerInput();
@@ -22,9 +25,13 @@ function gameState(rounds, player){
   }
   else if (roundCount>=rounds){
     if(playerScore>computerScore){
+      $('#grpahic-computer').remove();
+      $('#graphic-user').append('<img class="responsive-img slideRight bounce" id="winner-image" src="img/winner.png">');
       swal('You won! Scoring ' +playerScore+ ' victories' );
     }
     else if (playerScore<computerScore){
+      $('#graphic-user').remove();
+      $('#graphic-computer').append('<img class="responsive-img slideLeft bounce" id="computer-winner" src="img/winner2.png">');
       swal('CPU won. Scoring '+computerScore+' victories');
     }
  $('.game').on('click',function(){
@@ -49,7 +56,7 @@ function userPicks(){
       $('#graphic-user').append('<img class="user-image responsive-img pullDown" src="img/scissor-user.png">');
     }
  
-    gameState(3, userInput);
+    gameState(5, userInput);
   });
 
  }
@@ -124,7 +131,13 @@ function shakeHands(){
 }
 
 
-
+//intro instructions
+function intro(){
+  $(window).load(function(){
+    swal('Welcome to Rock Paper Scissors. Please select a option below to begin playing best out of five wins!');
+  });
+  
+}
 
 
 

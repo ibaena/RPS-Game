@@ -13,8 +13,25 @@
 </head>
 <body>
 <div class="container">
-  <div class="row" id="title">
-    <h3 class="center-align">RPS Game</h3>
+  <div class="row" id="scoreboard">
+   <table class="bordered centered">
+     <thead>
+       <tr>
+         <th><h5>You</h5></th>
+         <th><h5>CPU</h5></th>
+         <th><h5>Ties</h5></th>
+         <th><h5>Rounds</h5></th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+         <td><h4 id="myScore">0</h4></td>
+         <td><h4 id="compScore">0</h4></td>
+         <td><h4 id="tieScore">0</h4></td>
+         <td><h4 id="rounds">0</h4></td>
+       </tr>
+     </tbody>
+   </table>
   </div>
   <div class="row" id="graphic">
     <div class="col s4 left-align" id="graphic-user"></div>
@@ -30,26 +47,6 @@
    <div class="col s4 center-align">
       <a class="waves-effect waves-light btn game grey " value="scissors">Scissors</a>
    </div>
-  </div>
-  <div class="row" id="scoreboard">
-   <table class="bordered centered">
-     <thead>
-       <tr>
-         <th>You</th>
-         <th>CPU</th>
-         <th>Ties</th>
-         <th>Rounds</th>
-       </tr>
-     </thead>
-     <tbody>
-       <tr>
-         <td><h4 id="myScore">0</h4></td>
-         <td><h4 id="compScore">0</h4></td>
-         <td><h4 id="tieScore">0</h4></td>
-         <td><h4 id="rounds">0</h4></td>
-       </tr>
-     </tbody>
-   </table>
   </div>
 </div>
 
